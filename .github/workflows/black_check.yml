@@ -1,7 +1,6 @@
 name: Black Tests Checks
 on:
-  push:
-    branches: ${{ github.ref }}
+  push
 jobs:
   api_black_tests:
     runs-on: ubuntu-latest
