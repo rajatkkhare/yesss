@@ -1,0 +1,26 @@
+name: Black Tests Checks
+jobs:
+  api_black_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - Checkout Step
+        uses: actions/checkout@v2
+      - name: Step 2 - Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+          cache: 'pip'
+      - name: Step 3 - Install Black
+        run: |
+          pip install black==22.10.0
+      - name: Step 4 - Run Tests
+        run: |
+          black ./api
+      - name: Step 5 - Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: ${{ github.actor }}
+          author_email: ${{ github.actor }}@users.noreply.github.com
+          message: "Format code with black"
+          add: "."
+          branch: ${{ github.ref }}
