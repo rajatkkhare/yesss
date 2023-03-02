@@ -1,6 +1,7 @@
 name: Black Tests Checks
 on:
-  push
+  push:
+    branches: [ main ]
 jobs:
   api_black_tests:
     runs-on: ubuntu-latest
